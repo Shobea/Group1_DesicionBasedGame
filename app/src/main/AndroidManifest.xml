@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group1_DesicionBasedGame">
         <activity
-            android:name=".battle"
+            android:name=".View.battle"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
