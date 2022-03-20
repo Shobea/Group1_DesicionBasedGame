@@ -19,17 +19,6 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <TextView
-        android:id="@+id/txtHeroMana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/txtHeroHealth"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroHealth"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeroHealth" />
-
-    <TextView
         android:id="@+id/txtHeroHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,24 +49,26 @@
         app:layout_constraintStart_toStartOf="@+id/txtMonsterName"
         app:layout_constraintTop_toBottomOf="@+id/txtMonsterName" />
 
-    <TextView
-        android:id="@+id/txtMonsterMana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsterHealth"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtMonsterHealth"
-        app:layout_constraintTop_toBottomOf="@+id/txtMonsterHealth" />
-
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsterMana"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroMana"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsterHealth"
+        app:layout_constraintStart_toStartOf="@+id/txtHeroHealth"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsterHealth"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="@+id/txtHeroHealth"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.823" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

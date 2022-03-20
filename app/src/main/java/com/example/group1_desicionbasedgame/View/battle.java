@@ -1,11 +1,15 @@
 package com.example.group1_desicionbasedgame.View;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +24,21 @@ import java.util.Random;
 
 public class battle extends AppCompatActivity {
     MediaPlayer mediaPlayer;
-    TextView heroName, heroHP;
-    TextView monsterName, monsterHP;
-    Button btn5;
-    int counter = 0;
-    int monsterHealth, personHealth;
+    TextView heroName;
+    TextView heroHP;
 
-    Hero person = new Hero("Ambut", 700, 40, 80);
-    Monster allMonster = new Monster(75, 125);
-    Monster troll = new Monster("Troll", 500);
-    Monster ogre = new Monster("Ogre", 500);
-    Monster direWolf = new Monster("Dire Wolf", 650);
-    Monster goblin = new Monster("Goblin", 650);
+    TextView monsterName, monsterHP, eventdetail;
+    Button btn5;
+
+    private int counter = 0;
+    private int monsterHealth, personHealth;
+
+    Hero person = new Hero("Abdul",700, 700, 40, 80);
+    Monster allMonster = new Monster(50, 60);
+    Monster troll = new Monster("Troll", 700);
+    Monster ogre = new Monster("Ogre", 600);
+    Monster direWolf = new Monster("Dire Wolf", 500);
+    Monster goblin = new Monster("Goblin", 400);
 
 
     @Override
@@ -42,9 +49,10 @@ public class battle extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_battle);
 
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dungeon);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.battlemusic);
         mediaPlayer.start();
 
+        eventdetail = findViewById(R.id.event);
         heroName = findViewById(R.id.txtHeroName);
         heroHP = findViewById(R.id.txtHeroHealth);
         monsterName = findViewById(R.id.txtMonsterName);
@@ -87,6 +95,7 @@ public class battle extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void personDPS() {
         btn5.setOnClickListener(view -> {
             ++counter;
@@ -94,19 +103,27 @@ public class battle extends AppCompatActivity {
             if (counter % 2 == 1) {
                 int personDPS = randomizer.nextInt(person.getMaxAtk() - person.getMinAtk()) + person.getMinAtk();
                 monsterHealth = monsterHealth - personDPS;
+                eventdetail.setText("Person has inflicted"+personDPS+" damage!");
                 monsterHP.setText(String.valueOf(monsterHealth));
             } else if (counter % 2 == 0) {
                 int monsterDPS = randomizer.nextInt(allMonster.getMaxAtk() - allMonster.getMinAtk()) + allMonster.getMinAtk();
                 personHealth = personHealth - monsterDPS;
+                eventdetail.setText("Monster has inflicted "+monsterDPS+" damage!");
                 heroHP.setText(String.valueOf(personHealth));
             }
             if (monsterHealth <= 0) {
                 monsterHP.setText("0");
-                btn5.setVisibility(View.GONE);
+                eventdetail.setText("You win! You have successfully cleared the dungeon.");
+                btn5.setText("Try Again");
+                btn5.setOnClickListener(v -> startActivity(new Intent(this,MainActivity.class)));
+
             }
             else if (personHealth <= 0) {
                 heroHP.setText("0");
-                btn5.setVisibility(View.GONE);
+                eventdetail.setText("You lost... Try again?");
+                btn5.setText("Try Again");
+                btn5.setOnClickListener(v -> startActivity(new Intent(this,MainActivity.class)));
+
             }
         });
 
@@ -117,6 +134,5 @@ public class battle extends AppCompatActivity {
         super.onPause();
         mediaPlayer.stop();
         mediaPlayer.release();
-
     }
 }
