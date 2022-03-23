@@ -310,8 +310,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
     }
     public void text (){
-        writer.animateText(choice);
         story.setText(choice);
+        writer.animateText(choice);
         Animation fade =
                 AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.animation);
@@ -324,10 +324,4 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         btn3.startAnimation(fade);
         btn4.startAnimation(fade);
         }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mediaPlayer.stop();
-        mediaPlayer.release();
-    }
 }
