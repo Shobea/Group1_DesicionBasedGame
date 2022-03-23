@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ public class battle extends AppCompatActivity {
     TextView heroHP;
 
     TextView monsterName, monsterHP, eventdetail;
+    ImageView imgTroll, imgOgre, imgDireWolf, imgGoblin;
     Button btn5;
 
     private int counter = 0;
@@ -51,6 +55,11 @@ public class battle extends AppCompatActivity {
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
 
+        imgTroll=findViewById(R.id.imgTroll);
+        imgOgre=findViewById(R.id.imgOgre);
+        imgDireWolf=findViewById(R.id.imgDireWolf);
+        imgGoblin=findViewById(R.id.imgGoblin);
+
         eventdetail = findViewById(R.id.event);
         heroName = findViewById(R.id.txtHeroName);
         heroHP = findViewById(R.id.txtHeroHealth);
@@ -64,6 +73,7 @@ public class battle extends AppCompatActivity {
 
         switch (getIntent().getIntExtra("clicked", 1)) {
             case 1:
+                imgTroll.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Troll has appeared! Defeat it to escape the dungeon!", Toast.LENGTH_LONG).show();
                 monsterName.setText(String.valueOf(troll.getName()));
                 monsterHP.setText(String.valueOf(troll.getHealth()));
@@ -71,6 +81,7 @@ public class battle extends AppCompatActivity {
                 personDPS();
                 break;
             case 2:
+                imgOgre.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Ogre has appeared! Defeat it to escape the dungeon!", Toast.LENGTH_SHORT).show();
                 monsterName.setText(String.valueOf(ogre.getName()));
                 monsterHP.setText(String.valueOf(ogre.getHealth()));
@@ -78,6 +89,7 @@ public class battle extends AppCompatActivity {
                 personDPS();
                 break;
             case 3:
+                imgDireWolf.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Dire wolf has appeared! Defeat it to escape the dungeon!", Toast.LENGTH_SHORT).show();
                 monsterName.setText(String.valueOf(direWolf.getName()));
                 monsterHP.setText(String.valueOf(direWolf.getHealth()));
@@ -85,6 +97,7 @@ public class battle extends AppCompatActivity {
                 personDPS();
                 break;
             case 4:
+                imgDireWolf.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Goblin has appeared! Defeat it to escape the dungeon!", Toast.LENGTH_SHORT).show();
                 monsterName.setText(String.valueOf(goblin.getName()));
                 monsterHP.setText(String.valueOf(goblin.getHealth()));
