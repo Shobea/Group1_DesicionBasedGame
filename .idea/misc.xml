@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/activity_battle.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/activity_credits.xml" value="0.2" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/activity_main_menu.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/mainmenu.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/popwindow.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Group1_DesicionBasedGame/app/src/main/res/layout/window.xml" value="0.4" />
       </map>

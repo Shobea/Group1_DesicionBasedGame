@@ -2,14 +2,12 @@ package com.example.group1_desicionbasedgame.View;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,18 +37,19 @@ public class battle extends AppCompatActivity {
     Monster ogre = new Monster("Ogre", 600);
     Monster direWolf = new Monster("Dire Wolf", 500);
     Monster goblin = new Monster("Goblin", 400);
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_battle);
 
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.battlemusic);
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
         eventdetail = findViewById(R.id.event);
         heroName = findViewById(R.id.txtHeroName);
@@ -103,7 +102,7 @@ public class battle extends AppCompatActivity {
             if (counter % 2 == 1) {
                 int personDPS = randomizer.nextInt(person.getMaxAtk() - person.getMinAtk()) + person.getMinAtk();
                 monsterHealth = monsterHealth - personDPS;
-                eventdetail.setText("Person has inflicted"+personDPS+" damage!");
+                eventdetail.setText("Abdul has inflicted "+personDPS+" damage!");
                 monsterHP.setText(String.valueOf(monsterHealth));
             } else if (counter % 2 == 0) {
                 int monsterDPS = randomizer.nextInt(allMonster.getMaxAtk() - allMonster.getMinAtk()) + allMonster.getMinAtk();
@@ -115,7 +114,7 @@ public class battle extends AppCompatActivity {
                 monsterHP.setText("0");
                 eventdetail.setText("You win! You have successfully cleared the dungeon.");
                 btn5.setText("Try Again");
-                btn5.setOnClickListener(v -> startActivity(new Intent(this,MainActivity.class)));
+                btn5.setOnClickListener(v -> startActivity(new Intent(this,MainMenu.class)));
 
             }
             else if (personHealth <= 0) {
